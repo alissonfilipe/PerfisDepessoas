@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfis de pessoas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main id="principal">
+        <div id="perfil">
+            <h2>Perfil</h2>
+        </div>
+
+        <!--alt descrição para acessibilidade-->
+        <span id="span">
+            <img id="image" src="image da mulher.jpg">
+        </span>
+
+
+        <div id="botoes">
+            <button class="btn" id="botao1">
+                <strong>
+                    < <button class="btn" id='botao2'> <strong> > </strong>
+            </button>
+
+        </div>
+        <button id="btn2">surprise-me</button>
+
+        <div id="informacoes">
+            <div class="param">
+                <p>Nome: </p>
+                <p id="nome">maria</p>
+            </div>
+
+            <div class="param">
+                <p>Idade: </p>
+                <p id="idade">23</p>
+            </div>
+
+            <div class="param">
+                <p>Profissão: </p>
+                <p id="profissao">Desiner gráfico</p>
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+    <script>
+        let i = 0
+        const arrayDeObjetos = [
+            {
+                nome: "maria",
+                idade: 23,
+                profissao: "Desiner gráfico",
+                imagem: "image da mulher.jpg"
+            },
+            {
+                nome: "João Pedro",
+                idade: 20,
+                profissao: "pedreiro",
+                imagem: "Pedreiro.jpg"
+            },
+            {
+                nome: "James",
+                idade: 22,
+                profissao: "vendedor de salada de fruta",
+                imagem: "JamesFrutas.jpg"
+            }
+        ]
+
+        const Pnome = document.getElementById('nome')
+        const Pidade = document.getElementById('idade')
+        const Pprofissao = document.getElementById('profissao')
+        const Pimagem = document.getElementById('image')
+
+        const leftButton = document.getElementById('botao1')
+        const rightButton = document.getElementById('botao2')
+        const randomButton = document.getElementById('btn2')
+
+        rightButton.addEventListener('click', function () {
+            try {
+                if (i < arrayDeObjetos.length) {
+                    i++
+                    Pnome.innerHTML = arrayDeObjetos[i].nome
+                    Pidade.innerHTML = arrayDeObjetos[i].idade
+                    Pprofissao.innerHTML = arrayDeObjetos[i].profissao
+                    Pimagem.src = arrayDeObjetos[i].imagem
+                }
+            } catch (Error) {
+                alert('ultimo perfil!')
+            }
+
+        })
+
+
+        leftButton.addEventListener('click', function () {
+            if (i > 0) {
+                i--
+                Pnome.innerHTML = arrayDeObjetos[i].nome
+                Pidade.innerHTML = arrayDeObjetos[i].idade
+                Pprofissao.innerHTML = arrayDeObjetos[i].profissao
+                Pimagem.src = arrayDeObjetos[i].imagem
+            }
+
+        })
+
+
+        randomButton.addEventListener('click', function () {
+            i = Math.floor(Math.random() * arrayDeObjetos.length)
+
+            Pnome.innerHTML = arrayDeObjetos[i].nome
+            Pidade.innerHTML = arrayDeObjetos[i].idade
+            Pprofissao.innerHTML = arrayDeObjetos[i].profissao
+            Pimagem.src = arrayDeObjetos[i].imagem
+
+        })
+
+    </script>
+</body>
+
+</html>
